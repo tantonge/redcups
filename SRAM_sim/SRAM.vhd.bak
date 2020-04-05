@@ -20,9 +20,9 @@ ENTITY SRAM IS
 		SRAM_OE_N 		: OUT   STD_LOGIC;
 		SRAM_DQ			: OUT   STD_LOGIC;
 		SRAM_WE_N		: OUT   STD_LOGIC;
-		SRAM_UB_N		: OUT   STD_LOGIC;
-		SRAM_LB_N		: OUT   STD_LOGIC;
-		SRAM_CE_N		: OUT   STD_LOGIC;
+		SRAM_UB_N		: OUT   '0';
+		SRAM_LB_N		: OUT   '0';
+		SRAM_CE_N		: OUT   '0';
 	);
 END SRAM;
 
