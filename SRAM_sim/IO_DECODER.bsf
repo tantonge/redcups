@@ -264,15 +264,15 @@ applicable agreement for further details.
 	(port
 		(pt 224 544)
 		(output)
-		(text "SRAM_DATA_EN" (rect 0 0 86 12)(font "Arial" ))
-		(text "SRAM_DATA_EN" (rect 117 539 203 551)(font "Arial" ))
+		(text "SRAM_WRITE" (rect 0 0 71 12)(font "Arial" ))
+		(text "SRAM_WRITE" (rect 132 539 203 551)(font "Arial" ))
 		(line (pt 224 544)(pt 208 544)(line_width 1))
 	)
 	(port
 		(pt 224 560)
 		(output)
-		(text "SRAM_CTRL_EN" (rect 0 0 86 12)(font "Arial" ))
-		(text "SRAM_CTRL_EN" (rect 117 555 203 567)(font "Arial" ))
+		(text "SRAM_READ" (rect 0 0 67 12)(font "Arial" ))
+		(text "SRAM_READ" (rect 136 555 203 567)(font "Arial" ))
 		(line (pt 224 560)(pt 208 560)(line_width 1))
 	)
 	(drawing
