@@ -704,7 +704,7 @@ applicable agreement for further details.
 (symbol
 	(rect 392 392 640 584)
 	(text "SRAM" (rect 5 0 35 12)(font "Arial" ))
-	(text "inst12" (rect 8 176 37 188)(font "Arial" ))
+	(text "inst2" (rect 8 176 31 188)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -739,6 +739,13 @@ applicable agreement for further details.
 		(text "SRAM_READ" (rect 0 0 67 12)(font "Arial" ))
 		(text "SRAM_READ" (rect 21 91 88 103)(font "Arial" ))
 		(line (pt 0 96)(pt 16 96)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "CLOCK" (rect 0 0 37 12)(font "Arial" ))
+		(text "CLOCK" (rect 21 107 58 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 1))
 	)
 	(port
 		(pt 248 48)
@@ -799,10 +806,6 @@ applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 232 176)(line_width 1))
 	)
-)
-(connector
-	(pt 232 80)
-	(pt 200 80)
 )
 (connector
 	(text "clk_scomp" (rect 506 64 559 76)(font "Arial" ))
@@ -1033,7 +1036,25 @@ applicable agreement for further details.
 	(pt 312 488)
 	(pt 392 488)
 )
+(connector
+	(pt 216 80)
+	(pt 216 32)
+)
+(connector
+	(pt 232 80)
+	(pt 216 80)
+)
+(connector
+	(pt 216 80)
+	(pt 200 80)
+)
+(connector
+	(text "clk_50" (rect 322 488 353 500)(font "Arial" ))
+	(pt 312 504)
+	(pt 392 504)
+)
 (junction (pt 800 472))
 (junction (pt 768 456))
 (junction (pt 784 488))
 (junction (pt 752 440))
+(junction (pt 216 80))

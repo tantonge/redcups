@@ -2965,26 +2965,6 @@ a36c8ec425c8a2589af98b2d4daabc3
 
 # end
 # entity
-SCOMP_SRAM
-# storage
-db|SCOMP_SRAM.(0).cnf
-db|SCOMP_SRAM.(0).cnf
-# case_insensitive
-# source_file
-scomp_sram.bdf
-c0cd134a73ad54e678ba6d3940deb3b2
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 IO_DECODER
 # storage
 db|SCOMP_SRAM.(18).cnf
@@ -3011,6 +2991,26 @@ ON
 # lmf
 |altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+SCOMP_SRAM
+# storage
+db|SCOMP_SRAM.(0).cnf
+db|SCOMP_SRAM.(0).cnf
+# case_insensitive
+# source_file
+scomp_sram.bdf
+a06bf77a8074d6adb94cbdf4dbca6493
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
 # macro_sequence
 
 # end
