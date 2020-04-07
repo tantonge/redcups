@@ -8,6 +8,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 USE ALTERA_MF.ALTERA_MF_COMPONENTS.ALL;
 USE LPM.LPM_COMPONENTS.ALL;
 
+--initializes the input/outputs of the state machine
 ENTITY SRAM IS
 	PORT(
 		IO_WRITE    	: IN    STD_LOGIC;
@@ -15,7 +16,7 @@ ENTITY SRAM IS
 		SRAM_ADLOW_EN   : IN    STD_LOGIC;
 		SRAM_WRITE	    : IN    STD_LOGIC;
 		SRAM_READ   	: IN    STD_LOGIC;
-		CLOCK			: IN    STD_LOGIC;
+		CLOCK			: IN    STD_LOGIC;          
 		IO_DATA  		: INOUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 		SRAM_ADDR  		: OUT   STD_LOGIC_VECTOR(17 DOWNTO 0);
 		SRAM_OE_N 		: OUT   STD_LOGIC;
@@ -29,22 +30,33 @@ END SRAM;
 
 ARCHITECTURE a OF SRAM IS
 
+--defines the states of the I/O device
 TYPE STATE_TYPE IS (
 		WRITE_EN, DATA_SEND, WRITE_DISABLE,
 		READ_DATA1, READ_DATA2, 
 	);
-	
+--made a signal called state we can can referece this instead of STATE_TYPE
+SIGNAL state: STATE_TYPE;
+
 BEGIN
 
+--these three all go to ground, so here they are zero
 SRAM_UB_N <= '0';
 SRAM_LB_N <= '0';
 SRAM_CE_N <= '0';
 
 PROCESS (CLOCK, IO_WRITE)
 BEGIN 
+
+--these are active low, so we set them to 1 so that they dont do anything 
+--until we set them to zero
 SRAM_OE_N <= '1';
 SRAM_WE_N <= '1';
+
+--once IO_WRITE becomes 1, its time to do something
 IF (IO_WRITE = '1') THEN
+	
+	--
 	IF (SRAM_ADHI_EN = '1') THEN
 		SRAM_ADDR(17 DOWNTO 16) <= IO_DATA(1 DOWNTO 0);
 	END IF;
@@ -55,6 +67,7 @@ IF (IO_WRITE = '1') THEN
 		
 	IF (SRAM_WRITE = '1') THEN
 		PROCESS (CLOCK)
+		BEGIN
 			SRAM_WE_N <= '0';
 			WAIT UNTIL (RISING_EDGE(CLOCK));
 			SRAM_DQ <= IO_DATA;
@@ -74,6 +87,7 @@ IF (IO_WRITE = '1') THEN
 		END LOOP;
 		SRAM_OE_N <= '1';
 	END IF;
+	
 END IF;
 END PROCESS;
 
