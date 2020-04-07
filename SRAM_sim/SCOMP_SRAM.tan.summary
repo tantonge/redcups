@@ -5,32 +5,52 @@ Timing Analyzer Summary
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 11.928 ns
-From           : SRAM:inst12|SRAM_ADDR[8]
-To             : SRAM_DQ[4]
+Actual Time    : 10.824 ns
+From           : SRAM:inst2|SRAM_ADDR[5]
+To             : sram_addr[5]
 From Clock     : clk_50
 To Clock       : --
 Failed Paths   : 0
 
+Type           : Clock Setup: 'clk_50'
+Slack          : -0.471 ns
+Required Time  : 50.00 MHz ( period = 20.000 ns )
+Actual Time    : N/A
+From           : SCOMP:inst|IR[5]
+To             : SRAM:inst2|SRAM_DQ[6]~reg0
+From Clock     : altpll0:inst1|altpll:altpll_component|_clk0
+To Clock       : clk_50
+Failed Paths   : 93
+
 Type           : Clock Setup: 'altpll0:inst1|altpll:altpll_component|_clk0'
-Slack          : 29.539 ns
+Slack          : 28.440 ns
 Required Time  : 12.50 MHz ( period = 80.000 ns )
-Actual Time    : 47.80 MHz ( period = 20.922 ns )
-From           : SCOMP:inst|altsyncram:MEMORY|altsyncram_mut3:auto_generated|ram_block1a6~porta_address_reg10
-To             : SCOMP:inst|AC[11]
+Actual Time    : 43.25 MHz ( period = 23.120 ns )
+From           : SCOMP:inst|altsyncram:MEMORY|altsyncram_mut3:auto_generated|ram_block1a8~porta_address_reg10
+To             : SCOMP:inst|AC[10]
 From Clock     : altpll0:inst1|altpll:altpll_component|_clk0
 To Clock       : altpll0:inst1|altpll:altpll_component|_clk0
 Failed Paths   : 0
 
 Type           : Clock Hold: 'altpll0:inst1|altpll:altpll_component|_clk0'
-Slack          : -2.678 ns
+Slack          : 0.391 ns
 Required Time  : 12.50 MHz ( period = 80.000 ns )
 Actual Time    : N/A
-From           : SCOMP:inst|AC[15]
-To             : SRAM:inst12|SRAM_ADDR[15]
+From           : SCOMP:inst|MW
+To             : SCOMP:inst|MW
 From Clock     : altpll0:inst1|altpll:altpll_component|_clk0
 To Clock       : altpll0:inst1|altpll:altpll_component|_clk0
-Failed Paths   : 69
+Failed Paths   : 0
+
+Type           : Clock Hold: 'clk_50'
+Slack          : 0.391 ns
+Required Time  : 50.00 MHz ( period = 20.000 ns )
+Actual Time    : N/A
+From           : SRAM:inst2|SRAM_DQ[0]~reg0
+To             : SRAM:inst2|SRAM_DQ[0]~reg0
+From Clock     : clk_50
+To Clock       : clk_50
+Failed Paths   : 0
 
 Type           : Total number of failed paths
 Slack          : 
@@ -40,7 +60,7 @@ From           :
 To             : 
 From Clock     : 
 To Clock       : 
-Failed Paths   : 69
+Failed Paths   : 93
 
 --------------------------------------------------------------------------------------
 

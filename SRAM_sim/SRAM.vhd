@@ -33,10 +33,10 @@ ARCHITECTURE a OF SRAM IS
 --defines the states of the I/O device
 TYPE STATE_TYPE IS (
 		WRITE_EN, DATA_SEND, WRITE_DISABLE,
-		READ_DATA1, READ_DATA2, 
+		READ_DATA1, READ_DATA2, READ_DATA3
 	);
 --made a signal called state we can can referece this instead of STATE_TYPE
-SIGNAL state: STATE_TYPE;
+SIGNAL STATE: STATE_TYPE;
 
 BEGIN
 
@@ -45,50 +45,86 @@ SRAM_UB_N <= '0';
 SRAM_LB_N <= '0';
 SRAM_CE_N <= '0';
 
-PROCESS (CLOCK, IO_WRITE)
-BEGIN 
-
---these are active low, so we set them to 1 so that they dont do anything 
---until we set them to zero
-SRAM_OE_N <= '1';
-SRAM_WE_N <= '1';
-
---once IO_WRITE becomes 1, its time to do something
-IF (IO_WRITE = '1') THEN
-	
-	--
-	IF (SRAM_ADHI_EN = '1') THEN
+PROCESS (IO_WRITE, SRAM_ADHI_EN)
+BEGIN
+	IF (IO_WRITE = '1') AND (SRAM_ADHI_EN = '1') THEN
 		SRAM_ADDR(17 DOWNTO 16) <= IO_DATA(1 DOWNTO 0);
 	END IF;
-		
-	IF (SRAM_ADLOW_EN = '1') THEN
+END PROCESS;
+
+PROCESS (IO_WRITE, SRAM_ADLOW_EN)	
+BEGIN	
+	IF (IO_WRITE = '1') AND (SRAM_ADLOW_EN = '1') THEN
 		SRAM_ADDR(15 DOWNTO 0) <= IO_DATA;
 	END IF;
-		
-	IF (SRAM_WRITE = '1') THEN
-		PROCESS (CLOCK)
-		BEGIN
-			SRAM_WE_N <= '0';
-			WAIT UNTIL (RISING_EDGE(CLOCK));
-			SRAM_DQ <= IO_DATA;
-			WAIT UNTIL (RISING_EDGE(CLOCK));
-			SRAM_WE_N <= '1';
-			IO_DATA <= "ZZZZZZZZZZZZZZZZ";
-		END PROCESS;
-	END IF;
-	
-	IF (SRAM_READ = '1') THEN
-		SRAM_OE_N <= '0';
-		WAIT UNTIL (RISING_EDGE(CLOCK));
-		WAIT UNTIL (RISING_EDGE(CLOCK));
-		IO_DATA <= SRAM_DQ;
-		FOR i IN 0 TO 20 LOOP
-			WAIT UNTIL (RISING_EDGE(CLOCK));
-		END LOOP;
-		SRAM_OE_N <= '1';
-	END IF;
-	
-END IF;
 END PROCESS;
+		
+	
+PROCESS (CLOCK, IO_WRITE, SRAM_WRITE)
+BEGIN 
+	IF (IO_WRITE = '1') AND (SRAM_WRITE = '1') THEN
+		IF (RISING_EDGE(CLOCK)) THEN
+			STATE <= WRITE_EN;
+			CASE STATE IS
+				WHEN WRITE_EN =>
+					SRAM_WE_N <= '0';
+					STATE <= DATA_SEND;
+				WHEN DATA_SEND =>
+					SRAM_DQ <= IO_DATA;
+					STATE <= WRITE_DISABLE;
+				WHEN WRITE_DISABLE =>
+					SRAM_WE_N <= '1';
+					IO_DATA <= "ZZZZZZZZZZZZZZZZ";
+				WHEN OTHERS =>
+			END CASE;
+		END IF;
+	END IF;
+END PROCESS;
+
+
+PROCESS (CLOCK, SRAM_READ, IO_WRITE)
+BEGIN
+	IF (IO_WRITE = '1') AND (SRAM_READ = '1') THEN
+		IF (RISING_EDGE(CLOCK)) THEN
+			STATE <= READ_DATA1;
+			CASE STATE IS
+				WHEN READ_DATA1 =>
+					SRAM_OE_N <= '0';
+					STATE <= READ_DATA2;
+				WHEN READ_DATA2 =>
+					STATE <= READ_DATA3;
+				WHEN READ_DATA3 =>
+					IO_DATA <= SRAM_DQ;
+					SRAM_OE_N <= '1';
+				WHEN OTHERS =>
+			END CASE;
+		END IF;
+	END IF;
+END PROCESS;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 END a;
