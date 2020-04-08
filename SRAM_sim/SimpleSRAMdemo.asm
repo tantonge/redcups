@@ -30,11 +30,11 @@ Main:
 	; Set the address to 5
 	LOADI   0
 	OUT		SRAM_ADHI
-	LOADI   5
-	OUT		SRAM_ADLOW
 	
 	; Write a value
-	LOADI   10
+	LOAD   first
+	OUT		SRAM_ADLOW
+	LOADI   1
 	OUT		SRAM_DATA
 	LOADI   &B101
 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
@@ -43,61 +43,95 @@ Main:
 	LOADI	&B011
 	OUT     SRAM_CTRL   ; 011 = no drive, no write, no read
 	
-	; Write a value incorrectly
-	LOADI   6
+	; Writing Second Value
+	LOAD    second
 	OUT		SRAM_ADLOW
-	LOADI   11
+	LOADI   2
 	OUT		SRAM_DATA
 	LOADI   &B101
 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
+	LOADI   &B111
+	OUT		SRAM_CTRL   ; 111 = drive, no write, no OE(no read)
+	LOADI	&B011
+	OUT     SRAM_CTRL   ; 011 = no drive, no write, no read
+	
+	;Writing Third Value
+	LOAD    third
+	OUT		SRAM_ADLOW
+	LOADI   3
+	OUT		SRAM_DATA
+	LOADI   &B101
+	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
+	LOADI   &B111
+	OUT		SRAM_CTRL   ; 111 = drive, no write, no OE(no read)
+	LOADI	&B011
+	OUT     SRAM_CTRL   ; 011 = no drive, no write, no read
+	
+	; Read a value from address 
+	LOAD    first
+	OUT     SRAM_CTRL
+	IN      SRAM_DATA   ; Data will be in AC after this
+	LOADI   &B11
+	OUT     SRAM_CTRL
+	
+	LOAD    second
+	OUT     SRAM_CTRL
+	IN      SRAM_DATA   ; Data will be in AC after this
+	LOADI   &B11
+	OUT     SRAM_CTRL
+	
+	LOAD    third
+	OUT     SRAM_CTRL
+	IN      SRAM_DATA   ; Data will be in AC after this
+	LOADI   &B11
+	OUT     SRAM_CTRL
+	
+	; Write a value incorrectly
+	;LOADI   6
+	;OUT		SRAM_ADLOW
+	;LOADI   11
+	;OUT		SRAM_DATA
+	;LOADI   &B101
+	;OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
 	
 	; NOTE: Changing the address mid-write is NOT SAFE, because it
 	; might overwrite data in addresses other than the two you're
 	; changing between.  It's done here just to confirm that the
 	; emulated SRAM chip behaves similarly to real SRAM.
-	LOADI   7
-	OUT		SRAM_ADLOW  ; Change the address mid-write
-	LOADI   8
-	OUT		SRAM_ADLOW  ; Change the address mid-write
+	;LOADI   7
+	;OUT		SRAM_ADLOW  ; Change the address mid-write
+	;LOADI   8
+	;OUT		SRAM_ADLOW  ; Change the address mid-write
 
 	; NOTE: Changing the data mid-write IS safe, because it
 	; will simply overwrite the previous data.  The data in
 	; the SRAM remains fluid until WE_N is deasserted, at which
 	; point the data is fixed.
-	LOADI   12
-	OUT		SRAM_DATA   ; Change the data mid-write
+	;LOADI   12
+	;OUT		SRAM_DATA   ; Change the data mid-write
+	;LOADI   &B111
+	;OUT		SRAM_CTRL   ; 111 = drive, no write, no OE(no read)
+	;LOADI	&B011
+	;OUT     SRAM_CTRL   ; 011 = no drive, no write, no read
 	
-	LOADI   &B111
-	OUT		SRAM_CTRL   ; 111 = drive, no write, no OE(no read)
-	LOADI	&B011
-	OUT     SRAM_CTRL   ; 011 = no drive, no write, no read
-	
-	; Read a value from address 0x105
-	LOADI   &H105
-	OUT		SRAM_ADLOW
-	LOADI   &B10
-	OUT     SRAM_CTRL
-	IN      SRAM_DATA   ; Data will be in AC after this
-	LOADI   &B11
-	OUT     SRAM_CTRL
 	
 	; Read the previously-written values from addresses 5-8
-	LOADI   5
-	OUT		SRAM_ADLOW
-	LOADI   &B10
-	OUT     SRAM_CTRL
-	IN      SRAM_DATA   ; Data will be in AC after this
-	LOADI   6
-	OUT		SRAM_ADLOW
-	IN      SRAM_DATA   ; Data will be in AC after this
-	LOADI   7
-	OUT		SRAM_ADLOW
-	IN      SRAM_DATA   ; Data will be in AC after this
-	LOADI   8
-	OUT		SRAM_ADLOW
-	IN      SRAM_DATA   ; Data will be in AC after this
-	LOADI   &B11
-	OUT     SRAM_CTRL
+	;LOADI   5
+	;OUT		SRAM_ADLOW
+	;LOADI   &B10
+	;OUT     SRAM_CTRL
+	;IN      SRAM_DATA   ; Data will be in AC after this
+	;LOADI   6
+	;OUT		SRAM_ADLOW
+	;IN      SRAM_DATA   ; Data will be in AC after this
+	;LOADI   7
+	;OUT		SRAM_ADLOW
+	;IN      SRAM_DATA   ; Data will be in AC after this
+	;LOADI   8
+	;OUT		SRAM_ADLOW
+	;IN      SRAM_DATA   ; Data will be in AC after this
+	;LOADI   &B11
+	;OUT     SRAM_CTRL
 
 	
 Done:
@@ -499,6 +533,9 @@ Seven:    DW 7
 Eight:    DW 8
 Nine:     DW 9
 Ten:      DW 10
+first:    DW &H02
+second:   DW &H12
+third:    DW &H23
 
 ; Some bit masks.
 ; Masks of multiple bits can be constructed by ORing these
