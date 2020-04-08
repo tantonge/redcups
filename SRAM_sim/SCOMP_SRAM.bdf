@@ -1017,26 +1017,6 @@ applicable agreement for further details.
 	(pt 816 536)
 )
 (connector
-	(text "sram_write" (rect 280 920 333 932)(font "Arial" ))
-	(pt 352 936)
-	(pt 280 936)
-)
-(connector
-	(text "sram_read" (rect 280 936 331 948)(font "Arial" ))
-	(pt 352 952)
-	(pt 280 952)
-)
-(connector
-	(text "sram_read" (rect 312 456 363 468)(font "Arial" ))
-	(pt 312 472)
-	(pt 392 472)
-)
-(connector
-	(text "sram_write" (rect 312 472 365 484)(font "Arial" ))
-	(pt 312 488)
-	(pt 392 488)
-)
-(connector
 	(pt 216 80)
 	(pt 216 32)
 )
@@ -1052,6 +1032,26 @@ applicable agreement for further details.
 	(text "clk_50" (rect 322 488 353 500)(font "Arial" ))
 	(pt 312 504)
 	(pt 392 504)
+)
+(connector
+	(text "sram_write" (rect 290 920 343 932)(font "Arial" ))
+	(pt 280 936)
+	(pt 352 936)
+)
+(connector
+	(text "sram_read" (rect 290 936 341 948)(font "Arial" ))
+	(pt 280 952)
+	(pt 352 952)
+)
+(connector
+	(text "sram_write" (rect 322 456 375 468)(font "Arial" ))
+	(pt 312 472)
+	(pt 392 472)
+)
+(connector
+	(text "sram_read" (rect 322 472 373 484)(font "Arial" ))
+	(pt 312 488)
+	(pt 392 488)
 )
 (junction (pt 800 472))
 (junction (pt 768 456))

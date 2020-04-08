@@ -1,0 +1,42 @@
+-- Altera Memory Initialization File (MIF)
+
+DEPTH = 2048;
+WIDTH = 16;
+
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT
+  BEGIN
+    [000..7FF] : 0000;  -- Default to NOP
+
+           000 : B800;  -- 			 LOADI 0
+           001 : 9813;  -- 			 OUT SRAM_ADHI
+           002 : 081A;  -- Test1:       LOAD  A
+           003 : 9812;  --              OUT SRAM_ADLOW
+           004 : B801;  --              LOADI 1
+           005 : 9811;  --              OUT SRAM_WRITE
+           006 : 081B;  -- Test2:       LOAD  B
+           007 : 9812;  --              OUT SRAM_ADLOW
+           008 : B802;  --              LOADI 2
+           009 : 9811;  --              OUT SRAM_WRITE
+           00A : 081C;  -- Test3:       LOAD  C
+           00B : 9812;  --              OUT SRAM_ADLOW
+           00C : B803;  --              LOADI 3
+           00D : 9811;  --              OUT SRAM_WRITE
+           00E : 081A;  --              LOAD  A
+           00F : 9812;  --              OUT SRAM_ADLOW
+           010 : 9810;  --              OUT SRAM_READ
+           011 : 9010;  --              IN  SRAM_READ
+           012 : 081B;  --              LOAD  B
+           013 : 9812;  --              OUT SRAM_ADLOW
+           014 : 9810;  --              OUT SRAM_READ
+           015 : 9010;  --              IN  SRAM_READ
+           016 : 081C;  --              LOAD  C
+           017 : 9812;  --              OUT SRAM_ADLOW
+           018 : 9810;  --              OUT SRAM_READ
+           019 : 9010;  --              IN  SRAM_READ
+           01A : 0002;  -- A: DW &H02
+           01B : 0012;  -- B: DW &H12
+           01C : 0023;  -- C: DW &H23
+  END;
