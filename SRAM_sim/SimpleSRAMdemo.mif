@@ -16,7 +16,7 @@ CONTENT
            003 : 9813;  -- 	OUT		SRAM_ADHI
            004 : 0945;  -- 	LOAD   first
            005 : 9812;  -- 	OUT		SRAM_ADLOW
-           006 : B801;  -- 	LOADI   1
+           006 : B816;  -- 	LOADI   22
            007 : 9811;  -- 	OUT		SRAM_DATA
            008 : B805;  -- 	LOADI   &B101
            009 : 9810;  -- 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
@@ -26,7 +26,7 @@ CONTENT
            00D : 9810;  -- 	OUT     SRAM_CTRL   ; 011 = no drive, no write, no read
            00E : 0946;  -- 	LOAD    second
            00F : 9812;  -- 	OUT		SRAM_ADLOW
-           010 : B802;  -- 	LOADI   2
+           010 : B815;  -- 	LOADI   21
            011 : 9811;  -- 	OUT		SRAM_DATA
            012 : B805;  -- 	LOADI   &B101
            013 : 9810;  -- 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
@@ -36,7 +36,7 @@ CONTENT
            017 : 9810;  -- 	OUT     SRAM_CTRL   ; 011 = no drive, no write, no read
            018 : 0947;  -- 	LOAD    third
            019 : 9812;  -- 	OUT		SRAM_ADLOW
-           01A : B803;  -- 	LOADI   3
+           01A : B816;  -- 	LOADI   22
            01B : 9811;  -- 	OUT		SRAM_DATA
            01C : B805;  -- 	LOADI   &B101
            01D : 9810;  -- 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)

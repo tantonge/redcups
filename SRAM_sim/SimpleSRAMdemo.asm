@@ -34,7 +34,7 @@ Main:
 	; Write a value
 	LOAD   first
 	OUT		SRAM_ADLOW
-	LOADI   1
+	LOADI   22
 	OUT		SRAM_DATA
 	LOADI   &B101
 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
@@ -46,7 +46,7 @@ Main:
 	; Writing Second Value
 	LOAD    second
 	OUT		SRAM_ADLOW
-	LOADI   2
+	LOADI   21
 	OUT		SRAM_DATA
 	LOADI   &B101
 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
@@ -58,7 +58,7 @@ Main:
 	;Writing Third Value
 	LOAD    third
 	OUT		SRAM_ADLOW
-	LOADI   3
+	LOADI   22
 	OUT		SRAM_DATA
 	LOADI   &B101
 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
