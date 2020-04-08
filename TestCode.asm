@@ -1,24 +1,24 @@
-Main:        LOADI  0      
-	     STORE  SRAM_addr_high
-	     LOAD   A
-             STORE  SRAM_addr_high
-	
-start:       LOAD SRAM_addr_low
+Test1:       LOAD  A
              OUT SRAM_ADLOW
-             LOAD SRAM_addr_high
              OUT SRAM_ADHI
+             OUT read
+             OUT write 
 
-loadAddr:    OUT &123
+Test2:       LOAD  B
+             OUT SRAM_ADLOW
+             OUT SRAM_ADHI
+             OUT read
+             OUT write 
 
-readWrite:   OUT read
-             OUT write    
-	     STORE  SRAM_addr_low
- 	     STORE  SRAM_addr_high
-	
+Test3:       LOAD  C
+             OUT SRAM_ADLOW
+             OUT SRAM_ADHI
+             OUT read
+             OUT write 
 	
 A: EQU &H01
-B: EQU &H02
-C: EQU &H03
+B: EQU &H12
+C: EQU &H23
 SRAM_READ:  EQU &H110
 SRAM_WRITE: EQU &H111
 SRAM_ADLOW: EQU &H12
