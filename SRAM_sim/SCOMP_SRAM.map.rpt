@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SCOMP_SRAM
-Wed Apr 08 01:11:26 2020
+Wed Apr 08 17:14:29 2020
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -15,22 +15,23 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. State Machine - |SCOMP_SRAM|SCOMP:inst|STATE
- 10. State Machine - |SCOMP_SRAM|SRAM:inst2|STATE
+ 10. State Machine - |SCOMP_SRAM|SRAM:inst8|STATE
  11. User-Specified and Inferred Latches
  12. Registers Removed During Synthesis
  13. Removed Registers Triggering Further Register Optimizations
  14. General Register Statistics
  15. Multiplexer Restructuring Statistics (Restructuring Performed)
  16. Source assignments for SCOMP:inst|altsyncram:MEMORY|altsyncram_fat3:auto_generated
- 17. Parameter Settings for User Entity Instance: SRAM:inst2|LPM_BUSTRI:WRITE_BUS
- 18. Parameter Settings for User Entity Instance: SRAM:inst2|LPM_BUSTRI:READ_BUS
- 19. Parameter Settings for User Entity Instance: SCOMP:inst|altsyncram:MEMORY
- 20. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_CLSHIFT:SHIFTER
- 21. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_BUSTRI:IO_BUS
- 22. Parameter Settings for User Entity Instance: altpll0:inst1|altpll:altpll_component
- 23. altsyncram Parameter Settings by Entity Instance
- 24. altpll Parameter Settings by Entity Instance
- 25. Analysis & Synthesis Messages
+ 17. Parameter Settings for User Entity Instance: SRAM:inst8|LPM_BUSTRI:WRITE_BUS
+ 18. Parameter Settings for User Entity Instance: SRAM:inst8|LPM_BUSTRI:READ_STORE_BUS
+ 19. Parameter Settings for User Entity Instance: SRAM:inst8|LPM_BUSTRI:READ_BUS
+ 20. Parameter Settings for User Entity Instance: SCOMP:inst|altsyncram:MEMORY
+ 21. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_CLSHIFT:SHIFTER
+ 22. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_BUSTRI:IO_BUS
+ 23. Parameter Settings for User Entity Instance: altpll0:inst1|altpll:altpll_component
+ 24. altsyncram Parameter Settings by Entity Instance
+ 25. altpll Parameter Settings by Entity Instance
+ 26. Analysis & Synthesis Messages
 
 
 
@@ -56,15 +57,15 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 08 01:11:26 2020        ;
+; Analysis & Synthesis Status        ; Successful - Wed Apr 08 17:14:28 2020        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; SCOMP_SRAM                                   ;
 ; Top-level Entity Name              ; SCOMP_SRAM                                   ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 1,533                                        ;
-;     Total combinational functions  ; 1,497                                        ;
-;     Dedicated logic registers      ; 194                                          ;
-; Total registers                    ; 194                                          ;
+; Total logic elements               ; 1,540                                        ;
+;     Total combinational functions  ; 1,508                                        ;
+;     Dedicated logic registers      ; 197                                          ;
+; Total registers                    ; 197                                          ;
 ; Total pins                         ; 43                                           ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 32,768                                       ;
@@ -189,20 +190,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+---------------------------------------------+
 ; Resource                                    ; Usage                                       ;
 +---------------------------------------------+---------------------------------------------+
-; Estimated Total logic elements              ; 1,533                                       ;
+; Estimated Total logic elements              ; 1,540                                       ;
 ;                                             ;                                             ;
-; Total combinational functions               ; 1497                                        ;
+; Total combinational functions               ; 1508                                        ;
 ; Logic element usage by number of LUT inputs ;                                             ;
-;     -- 4 input functions                    ; 680                                         ;
-;     -- 3 input functions                    ; 775                                         ;
-;     -- <=2 input functions                  ; 42                                          ;
+;     -- 4 input functions                    ; 685                                         ;
+;     -- 3 input functions                    ; 778                                         ;
+;     -- <=2 input functions                  ; 45                                          ;
 ;                                             ;                                             ;
 ; Logic elements by mode                      ;                                             ;
-;     -- normal mode                          ; 1471                                        ;
+;     -- normal mode                          ; 1482                                        ;
 ;     -- arithmetic mode                      ; 26                                          ;
 ;                                             ;                                             ;
-; Total registers                             ; 194                                         ;
-;     -- Dedicated logic registers            ; 194                                         ;
+; Total registers                             ; 197                                         ;
+;     -- Dedicated logic registers            ; 197                                         ;
 ;     -- I/O registers                        ; 0                                           ;
 ;                                             ;                                             ;
 ; I/O pins                                    ; 43                                          ;
@@ -210,7 +211,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Total PLLs                                  ; 1                                           ;
 ; Maximum fan-out node                        ; altpll0:inst1|altpll:altpll_component|_clk0 ;
 ; Maximum fan-out                             ; 204                                         ;
-; Total fan-out                               ; 5943                                        ;
+; Total fan-out                               ; 5987                                        ;
 ; Average fan-out                             ; 3.39                                        ;
 +---------------------------------------------+---------------------------------------------+
 
@@ -220,17 +221,18 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                       ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------+--------------+
-; |SCOMP_SRAM                               ; 1497 (32)         ; 194 (0)      ; 32768       ; 0            ; 0       ; 0         ; 43   ; 0            ; |SCOMP_SRAM                                                               ; work         ;
+; |SCOMP_SRAM                               ; 1508 (32)         ; 197 (0)      ; 32768       ; 0            ; 0       ; 0         ; 43   ; 0            ; |SCOMP_SRAM                                                               ; work         ;
 ;    |CHIP_EMULATOR:inst4|                  ; 934 (934)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|CHIP_EMULATOR:inst4                                           ;              ;
-;    |IO_DECODER:inst10|                    ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|IO_DECODER:inst10                                             ;              ;
-;    |SCOMP:inst|                           ; 484 (386)         ; 183 (183)    ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SCOMP:inst                                                    ; work         ;
+;    |IO_DECODER:inst10|                    ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|IO_DECODER:inst10                                             ;              ;
+;    |SCOMP:inst|                           ; 485 (387)         ; 183 (183)    ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SCOMP:inst                                                    ; work         ;
 ;       |altsyncram:MEMORY|                 ; 0 (0)             ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SCOMP:inst|altsyncram:MEMORY                                  ; work         ;
 ;          |altsyncram_fat3:auto_generated| ; 0 (0)             ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SCOMP:inst|altsyncram:MEMORY|altsyncram_fat3:auto_generated   ; work         ;
 ;       |lpm_bustri:IO_BUS|                 ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SCOMP:inst|lpm_bustri:IO_BUS                                  ;              ;
 ;       |lpm_clshift:SHIFTER|               ; 82 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SCOMP:inst|lpm_clshift:SHIFTER                                ; work         ;
 ;          |lpm_clshift_fuc:auto_generated| ; 82 (82)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SCOMP:inst|lpm_clshift:SHIFTER|lpm_clshift_fuc:auto_generated ;              ;
-;    |SRAM:inst2|                           ; 44 (28)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SRAM:inst2                                                    ;              ;
-;       |lpm_bustri:WRITE_BUS|              ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SRAM:inst2|lpm_bustri:WRITE_BUS                               ; work         ;
+;    |SRAM:inst8|                           ; 53 (36)           ; 14 (14)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SRAM:inst8                                                    ;              ;
+;       |lpm_bustri:READ_STORE_BUS|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SRAM:inst8|lpm_bustri:READ_STORE_BUS                          ; work         ;
+;       |lpm_bustri:WRITE_BUS|              ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|SRAM:inst8|lpm_bustri:WRITE_BUS                               ; work         ;
 ;    |altpll0:inst1|                        ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|altpll0:inst1                                                 ;              ;
 ;       |altpll:altpll_component|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |SCOMP_SRAM|altpll0:inst1|altpll:altpll_component                         ;              ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------+--------------+
@@ -283,19 +285,21 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |SCOMP_SRAM|SRAM:inst2|STATE                                                                                                       ;
-+---------------------+------------------+------------------+------------------+---------------------+-----------------+----------------+------------+
-; Name                ; STATE.READ_DATA3 ; STATE.READ_DATA2 ; STATE.READ_DATA1 ; STATE.WRITE_DISABLE ; STATE.DATA_SEND ; STATE.WRITE_EN ; STATE.IDLE ;
-+---------------------+------------------+------------------+------------------+---------------------+-----------------+----------------+------------+
-; STATE.IDLE          ; 0                ; 0                ; 0                ; 0                   ; 0               ; 0              ; 0          ;
-; STATE.WRITE_EN      ; 0                ; 0                ; 0                ; 0                   ; 0               ; 1              ; 1          ;
-; STATE.DATA_SEND     ; 0                ; 0                ; 0                ; 0                   ; 1               ; 0              ; 1          ;
-; STATE.WRITE_DISABLE ; 0                ; 0                ; 0                ; 1                   ; 0               ; 0              ; 1          ;
-; STATE.READ_DATA1    ; 0                ; 0                ; 1                ; 0                   ; 0               ; 0              ; 1          ;
-; STATE.READ_DATA2    ; 0                ; 1                ; 0                ; 0                   ; 0               ; 0              ; 1          ;
-; STATE.READ_DATA3    ; 1                ; 0                ; 0                ; 0                   ; 0               ; 0              ; 1          ;
-+---------------------+------------------+------------------+------------------+---------------------+-----------------+----------------+------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |SCOMP_SRAM|SRAM:inst8|STATE                                                                                                                                       ;
++---------------------+------------+------------------+------------------+------------------+------------------+---------------------+-----------------+----------------+------------+
+; Name                ; STATE.SEND ; STATE.READ_DATA4 ; STATE.READ_DATA3 ; STATE.READ_DATA2 ; STATE.READ_DATA1 ; STATE.WRITE_DISABLE ; STATE.DATA_SEND ; STATE.WRITE_EN ; STATE.IDLE ;
++---------------------+------------+------------------+------------------+------------------+------------------+---------------------+-----------------+----------------+------------+
+; STATE.IDLE          ; 0          ; 0                ; 0                ; 0                ; 0                ; 0                   ; 0               ; 0              ; 0          ;
+; STATE.WRITE_EN      ; 0          ; 0                ; 0                ; 0                ; 0                ; 0                   ; 0               ; 1              ; 1          ;
+; STATE.DATA_SEND     ; 0          ; 0                ; 0                ; 0                ; 0                ; 0                   ; 1               ; 0              ; 1          ;
+; STATE.WRITE_DISABLE ; 0          ; 0                ; 0                ; 0                ; 0                ; 1                   ; 0               ; 0              ; 1          ;
+; STATE.READ_DATA1    ; 0          ; 0                ; 0                ; 0                ; 1                ; 0                   ; 0               ; 0              ; 1          ;
+; STATE.READ_DATA2    ; 0          ; 0                ; 0                ; 1                ; 0                ; 0                   ; 0               ; 0              ; 1          ;
+; STATE.READ_DATA3    ; 0          ; 0                ; 1                ; 0                ; 0                ; 0                   ; 0               ; 0              ; 1          ;
+; STATE.READ_DATA4    ; 0          ; 1                ; 0                ; 0                ; 0                ; 0                   ; 0               ; 0              ; 1          ;
+; STATE.SEND          ; 1          ; 0                ; 0                ; 0                ; 0                ; 0                   ; 0               ; 0              ; 1          ;
++---------------------+------------+------------------+------------------+------------------+------------------+---------------------+-----------------+----------------+------------+
 
 
 +------------------------------------------------------------------------------------------------------+
@@ -303,24 +307,24 @@ Encoding Type:  One-Hot
 +------------------------------------------------------+----------------------+------------------------+
 ; Latch Name                                           ; Latch Enable Signal  ; Free of Timing Hazards ;
 +------------------------------------------------------+----------------------+------------------------+
-; SRAM:inst2|SRAM_ADDR[17]                             ; SRAM:inst2|process_0 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[16]                             ; SRAM:inst2|process_0 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[15]                             ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[14]                             ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[13]                             ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[12]                             ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[11]                             ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[10]                             ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[9]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[8]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[7]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[6]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[5]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[4]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[3]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[2]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[1]                              ; SRAM:inst2|process_1 ; yes                    ;
-; SRAM:inst2|SRAM_ADDR[0]                              ; SRAM:inst2|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[17]                             ; SRAM:inst8|process_0 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[16]                             ; SRAM:inst8|process_0 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[15]                             ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[14]                             ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[13]                             ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[12]                             ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[11]                             ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[10]                             ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[9]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[8]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[7]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[6]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[5]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[4]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[3]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[2]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[1]                              ; SRAM:inst8|process_1 ; yes                    ;
+; SRAM:inst8|SRAM_ADDR[0]                              ; SRAM:inst8|process_1 ; yes                    ;
 ; CHIP_EMULATOR:inst4|SRAM~175                         ; rtl~0                ; yes                    ;
 ; CHIP_EMULATOR:inst4|SRAM~159                         ; rtl~1                ; yes                    ;
 ; CHIP_EMULATOR:inst4|SRAM~143                         ; rtl~2                ; yes                    ;
@@ -416,43 +420,43 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 ; SCOMP:inst|INT_REQ[0]                  ; Stuck at GND due to stuck port clock        ;
 ; SCOMP:inst|INT_REQ_SYNC[0]             ; Stuck at GND due to stuck port data_in      ;
 ; SCOMP:inst|INT_REQ[1..3]               ; Stuck at GND due to stuck port clock        ;
-; SRAM:inst2|IO_DATA[1]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[0]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[2]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[3]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[4]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[5]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[6]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[7]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[8]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[9]~en               ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[10]~en              ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[11]~en              ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[12]~en              ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[13]~en              ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[14]~en              ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[15]~en              ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[0]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[1]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[2]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[3]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[4]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[5]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[6]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[7]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[8]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[9]~en               ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[10]~en              ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[11]~en              ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[12]~en              ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[13]~en              ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[14]~en              ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[15]~en              ; Stuck at GND due to stuck port data_in      ;
 ; SCOMP:inst|INT_REQ_SYNC[1..3]          ; Stuck at GND due to stuck port data_in      ;
 ; SCOMP:inst|IIE[0..3]                   ; Lost fanout                                 ;
 ; SCOMP:inst|INT_ACK[0..3]               ; Lost fanout                                 ;
 ; SCOMP:inst|AC_SAVED[0..15]             ; Stuck at GND due to stuck port clock_enable ;
 ; SCOMP:inst|PC_SAVED[0..10]             ; Stuck at GND due to stuck port clock_enable ;
-; SRAM:inst2|IO_DATA[0]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[15]~reg0            ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[14]~reg0            ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[13]~reg0            ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[12]~reg0            ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[11]~reg0            ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[10]~reg0            ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[9]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[8]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[7]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[6]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[5]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[4]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[3]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[2]~reg0             ; Stuck at GND due to stuck port data_in      ;
-; SRAM:inst2|IO_DATA[1]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[0]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[15]~reg0            ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[14]~reg0            ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[13]~reg0            ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[12]~reg0            ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[11]~reg0            ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[10]~reg0            ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[9]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[8]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[7]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[6]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[5]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[4]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[3]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[2]~reg0             ; Stuck at GND due to stuck port data_in      ;
+; SRAM:inst8|IO_DATA[1]~reg0             ; Stuck at GND due to stuck port data_in      ;
 ; SCOMP:inst|GIE                         ; Stuck at VCC due to stuck port data_in      ;
 ; Total Number of Removed Registers = 76 ;                                             ;
 +----------------------------------------+---------------------------------------------+
@@ -479,12 +483,12 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 194   ;
+; Total registers                              ; 197   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 34    ;
+; Number of registers using Asynchronous Clear ; 36    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 160   ;
+; Number of registers using Clock Enable       ; 161   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -494,11 +498,10 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
-; 3:1                ; 99 bits   ; 198 LEs       ; 99 LEs               ; 99 LEs                 ; Yes        ; |SCOMP_SRAM|SCOMP:inst|PC_STACK[0][2] ;
-; 12:1               ; 11 bits   ; 88 LEs        ; 22 LEs               ; 66 LEs                 ; Yes        ; |SCOMP_SRAM|SCOMP:inst|PC[3]          ;
+; 3:1                ; 99 bits   ; 198 LEs       ; 99 LEs               ; 99 LEs                 ; Yes        ; |SCOMP_SRAM|SCOMP:inst|PC_STACK[6][9] ;
+; 12:1               ; 11 bits   ; 88 LEs        ; 22 LEs               ; 66 LEs                 ; Yes        ; |SCOMP_SRAM|SCOMP:inst|PC[2]          ;
 ; 13:1               ; 16 bits   ; 128 LEs       ; 112 LEs              ; 16 LEs                 ; Yes        ; |SCOMP_SRAM|SCOMP:inst|AC[1]          ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; No         ; |SCOMP_SRAM|SRAM:inst2|STATE          ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |SCOMP_SRAM|SRAM:inst2|STATE          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SCOMP_SRAM|SRAM:inst8|STATE          ;
 ; 13:1               ; 16 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; No         ; |SCOMP_SRAM|SCOMP:inst|Add1           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
 
@@ -513,7 +516,7 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 
 
 +------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: SRAM:inst2|LPM_BUSTRI:WRITE_BUS ;
+; Parameter Settings for User Entity Instance: SRAM:inst8|LPM_BUSTRI:WRITE_BUS ;
 +----------------+-------+-----------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                ;
 +----------------+-------+-----------------------------------------------------+
@@ -522,8 +525,18 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SRAM:inst8|LPM_BUSTRI:READ_STORE_BUS ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; LPM_WIDTH      ; 16    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-----------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: SRAM:inst2|LPM_BUSTRI:READ_BUS ;
+; Parameter Settings for User Entity Instance: SRAM:inst8|LPM_BUSTRI:READ_BUS ;
 +----------------+-------+----------------------------------------------------+
 ; Parameter Name ; Value ; Type                                               ;
 +----------------+-------+----------------------------------------------------+
@@ -1031,7 +1044,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Apr 08 01:11:22 2020
+    Info: Processing started: Wed Apr 08 17:14:24 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SCOMP_SRAM -c SCOMP_SRAM
 Info: Found 2 design units, including 1 entities, in source file io_decoder.vhd
     Info: Found design unit 1: IO_DECODER-a
@@ -1062,32 +1075,33 @@ Info: Found 2 design units, including 1 entities, in source file sram.vhd
     Info: Found design unit 1: SRAM-a
     Info: Found entity 1: SRAM
 Info: Elaborating entity "SCOMP_SRAM" for the top level hierarchy
-Info: Elaborating entity "SRAM" for hierarchy "SRAM:inst2"
-Warning (10492): VHDL Process Statement warning at SRAM.vhd(80): signal "IO_DATA" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at SRAM.vhd(77): inferring latch(es) for signal or variable "SRAM_ADDR", which holds its previous value in one or more paths through the process
-Warning (10492): VHDL Process Statement warning at SRAM.vhd(87): signal "IO_DATA" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at SRAM.vhd(84): inferring latch(es) for signal or variable "SRAM_ADDR", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "SRAM_ADDR[0]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[1]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[2]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[3]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[4]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[5]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[6]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[7]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[8]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[9]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[10]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[11]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[12]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[13]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[14]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[15]" at SRAM.vhd(84)
-Info (10041): Inferred latch for "SRAM_ADDR[16]" at SRAM.vhd(77)
-Info (10041): Inferred latch for "SRAM_ADDR[17]" at SRAM.vhd(77)
-Info: Elaborating entity "LPM_BUSTRI" for hierarchy "SRAM:inst2|LPM_BUSTRI:WRITE_BUS"
-Info: Elaborated megafunction instantiation "SRAM:inst2|LPM_BUSTRI:WRITE_BUS"
-Info: Instantiated megafunction "SRAM:inst2|LPM_BUSTRI:WRITE_BUS" with the following parameter:
+Info: Elaborating entity "SRAM" for hierarchy "SRAM:inst8"
+Warning (10492): VHDL Process Statement warning at SRAM.vhd(98): signal "IO_DATA" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at SRAM.vhd(95): inferring latch(es) for signal or variable "SRAM_ADDR", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at SRAM.vhd(105): signal "IO_DATA" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at SRAM.vhd(102): inferring latch(es) for signal or variable "SRAM_ADDR", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at SRAM.vhd(111): signal "IO_CYCLE" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (10041): Inferred latch for "SRAM_ADDR[0]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[1]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[2]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[3]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[4]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[5]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[6]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[7]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[8]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[9]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[10]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[11]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[12]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[13]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[14]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[15]" at SRAM.vhd(102)
+Info (10041): Inferred latch for "SRAM_ADDR[16]" at SRAM.vhd(95)
+Info (10041): Inferred latch for "SRAM_ADDR[17]" at SRAM.vhd(95)
+Info: Elaborating entity "LPM_BUSTRI" for hierarchy "SRAM:inst8|LPM_BUSTRI:WRITE_BUS"
+Info: Elaborated megafunction instantiation "SRAM:inst8|LPM_BUSTRI:WRITE_BUS"
+Info: Instantiated megafunction "SRAM:inst8|LPM_BUSTRI:WRITE_BUS" with the following parameter:
     Info: Parameter "LPM_WIDTH" = "16"
     Info: Parameter "LPM_TYPE" = "LPM_BUSTRI"
     Info: Parameter "LPM_HINT" = "UNUSED"
@@ -1226,39 +1240,39 @@ Info: Elaborating entity "IO_DECODER" for hierarchy "IO_DECODER:inst10"
 Info: Elaborating entity "CHIP_EMULATOR" for hierarchy "CHIP_EMULATOR:inst4"
 Warning (10492): VHDL Process Statement warning at CHIP_EMULATOR.vhd(34): signal "ADDR" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning: Removed fan-outs from the following always-disabled I/O buffers
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[1]" to the node "SRAM:inst2|SRAM_ADDR[1]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[0]" to the node "SRAM:inst2|SRAM_ADDR[0]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[15]" to the node "SRAM:inst2|SRAM_ADDR[15]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[14]" to the node "SRAM:inst2|SRAM_ADDR[14]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[13]" to the node "SRAM:inst2|SRAM_ADDR[13]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[12]" to the node "SRAM:inst2|SRAM_ADDR[12]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[11]" to the node "SRAM:inst2|SRAM_ADDR[11]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[10]" to the node "SRAM:inst2|SRAM_ADDR[10]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[9]" to the node "SRAM:inst2|SRAM_ADDR[9]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[8]" to the node "SRAM:inst2|SRAM_ADDR[8]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[7]" to the node "SRAM:inst2|SRAM_ADDR[7]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[6]" to the node "SRAM:inst2|SRAM_ADDR[6]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[5]" to the node "SRAM:inst2|SRAM_ADDR[5]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[4]" to the node "SRAM:inst2|SRAM_ADDR[4]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[3]" to the node "SRAM:inst2|SRAM_ADDR[3]"
-    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst2|IO_DATA[2]" to the node "SRAM:inst2|SRAM_ADDR[2]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[1]" to the node "SRAM:inst8|SRAM_ADDR[1]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[0]" to the node "SRAM:inst8|SRAM_ADDR[0]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[15]" to the node "SRAM:inst8|SRAM_ADDR[15]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[14]" to the node "SRAM:inst8|SRAM_ADDR[14]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[13]" to the node "SRAM:inst8|SRAM_ADDR[13]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[12]" to the node "SRAM:inst8|SRAM_ADDR[12]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[11]" to the node "SRAM:inst8|SRAM_ADDR[11]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[10]" to the node "SRAM:inst8|SRAM_ADDR[10]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[9]" to the node "SRAM:inst8|SRAM_ADDR[9]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[8]" to the node "SRAM:inst8|SRAM_ADDR[8]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[7]" to the node "SRAM:inst8|SRAM_ADDR[7]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[6]" to the node "SRAM:inst8|SRAM_ADDR[6]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[5]" to the node "SRAM:inst8|SRAM_ADDR[5]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[4]" to the node "SRAM:inst8|SRAM_ADDR[4]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[3]" to the node "SRAM:inst8|SRAM_ADDR[3]"
+    Warning: Removed fan-out from the always-disabled I/O buffer "SRAM:inst8|IO_DATA[2]" to the node "SRAM:inst8|SRAM_ADDR[2]"
 Warning: Tri-state node(s) do not directly drive top-level pin(s)
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[1]" to the node "SRAM:inst2|SRAM_ADDR[1]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[0]" to the node "SRAM:inst2|SRAM_ADDR[0]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[15]" to the node "SRAM:inst2|SRAM_ADDR[15]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[14]" to the node "SRAM:inst2|SRAM_ADDR[14]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[13]" to the node "SRAM:inst2|SRAM_ADDR[13]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[12]" to the node "SRAM:inst2|SRAM_ADDR[12]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[11]" to the node "SRAM:inst2|SRAM_ADDR[11]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[10]" to the node "SRAM:inst2|SRAM_ADDR[10]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[9]" to the node "SRAM:inst2|SRAM_ADDR[9]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[8]" to the node "SRAM:inst2|SRAM_ADDR[8]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[7]" to the node "SRAM:inst2|SRAM_ADDR[7]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[6]" to the node "SRAM:inst2|SRAM_ADDR[6]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[5]" to the node "SRAM:inst2|SRAM_ADDR[5]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[4]" to the node "SRAM:inst2|SRAM_ADDR[4]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[3]" to the node "SRAM:inst2|SRAM_ADDR[3]" into an OR gate
-    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[2]" to the node "SRAM:inst2|SRAM_ADDR[2]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[1]" to the node "SRAM:inst8|SRAM_ADDR[1]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[0]" to the node "SRAM:inst8|SRAM_ADDR[0]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[15]" to the node "SRAM:inst8|SRAM_ADDR[15]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[14]" to the node "SRAM:inst8|SRAM_ADDR[14]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[13]" to the node "SRAM:inst8|SRAM_ADDR[13]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[12]" to the node "SRAM:inst8|SRAM_ADDR[12]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[11]" to the node "SRAM:inst8|SRAM_ADDR[11]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[10]" to the node "SRAM:inst8|SRAM_ADDR[10]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[9]" to the node "SRAM:inst8|SRAM_ADDR[9]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[8]" to the node "SRAM:inst8|SRAM_ADDR[8]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[7]" to the node "SRAM:inst8|SRAM_ADDR[7]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[6]" to the node "SRAM:inst8|SRAM_ADDR[6]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[5]" to the node "SRAM:inst8|SRAM_ADDR[5]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[4]" to the node "SRAM:inst8|SRAM_ADDR[4]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[3]" to the node "SRAM:inst8|SRAM_ADDR[3]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:IO_BUS|dout[2]" to the node "SRAM:inst8|SRAM_ADDR[2]" into an OR gate
     Warning: Converted the fan-out from the tri-state buffer "CHIP_EMULATOR:inst4|DATA[15]" to the node "CHIP_EMULATOR:inst4|SRAM" into an OR gate
     Warning: Converted the fan-out from the tri-state buffer "CHIP_EMULATOR:inst4|DATA[14]" to the node "CHIP_EMULATOR:inst4|SRAM" into an OR gate
     Warning: Converted the fan-out from the tri-state buffer "CHIP_EMULATOR:inst4|DATA[13]" to the node "CHIP_EMULATOR:inst4|SRAM" into an OR gate
@@ -1276,1029 +1290,1029 @@ Warning: Tri-state node(s) do not directly drive top-level pin(s)
     Warning: Converted the fan-out from the tri-state buffer "CHIP_EMULATOR:inst4|DATA[1]" to the node "CHIP_EMULATOR:inst4|SRAM" into an OR gate
     Warning: Converted the fan-out from the tri-state buffer "CHIP_EMULATOR:inst4|DATA[0]" to the node "CHIP_EMULATOR:inst4|SRAM" into an OR gate
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~175 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~159 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~143 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~191 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~95 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~111 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~79 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~127 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~47 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~31 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~15 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~63 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~223 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~239 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~207 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~255 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~367 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~431 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~303 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~495 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~415 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~351 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~287 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~479 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~335 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~399 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~271 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~463 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~447 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~383 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~319 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~511 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~110 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~94 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~78 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~126 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~158 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~174 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~142 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~190 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~30 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~46 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~14 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~62 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~238 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~222 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~206 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~254 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~350 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~414 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~286 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~478 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~430 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~366 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~302 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~494 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~398 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~334 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~270 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~462 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~382 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~446 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~318 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~510 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~173 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~157 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~141 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~189 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~93 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~109 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~77 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~125 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~45 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~29 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~13 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~61 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~221 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~237 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~205 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~253 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~365 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~429 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~301 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~493 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~413 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~349 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~285 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~477 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~333 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~397 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~269 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~461 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~445 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~381 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~317 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~509 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~108 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~92 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~76 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~124 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~156 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~172 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~140 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~188 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~28 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~44 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~12 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~60 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~236 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~220 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~204 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~252 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~348 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~412 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~284 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~476 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~428 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~364 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~300 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~492 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~396 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~332 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~268 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~460 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~380 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~444 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~316 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~508 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~171 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~155 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~139 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~187 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~91 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~107 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~75 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~123 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~43 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~27 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~11 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~59 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~219 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~235 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~203 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~251 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~363 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~427 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~299 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~491 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~411 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~347 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~283 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~475 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~331 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~395 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~267 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~459 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~443 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~379 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~315 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~507 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~106 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~90 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~74 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~122 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~154 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~170 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~138 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~186 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~26 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~42 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~10 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~58 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~234 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~218 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~202 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~250 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~346 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~410 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~282 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~474 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~426 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~362 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~298 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~490 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~394 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~330 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~266 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~458 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~378 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~442 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~314 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~506 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~169 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~153 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~137 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~185 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~89 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~105 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~73 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~121 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~41 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~25 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~9 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~57 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~217 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~233 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~201 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~249 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~361 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~425 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~297 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~489 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~409 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~345 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~281 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~473 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~329 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~393 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~265 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~457 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~441 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~377 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~313 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~505 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~104 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~88 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~72 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~120 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~152 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~168 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~136 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~184 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~24 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~40 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~8 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~56 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~232 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~216 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~200 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~248 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~344 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~408 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~280 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~472 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~424 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~360 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~296 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~488 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~392 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~328 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~264 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~456 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~376 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~440 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~312 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~504 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~167 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~151 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~135 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~183 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~87 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~103 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~71 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~119 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~39 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~23 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~7 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~55 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~215 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~231 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~199 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~247 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~359 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~423 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~295 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~487 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~407 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~343 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~279 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~471 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~327 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~391 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~263 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~455 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~439 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~375 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~311 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~503 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~102 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~86 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~70 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~118 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~150 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~166 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~134 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~182 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~22 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~38 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~6 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~54 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~230 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~214 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~198 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~246 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~342 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~406 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~278 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~470 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~422 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~358 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~294 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~486 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~390 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~326 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~262 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~454 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~374 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~438 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~310 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~502 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~165 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~149 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~133 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~181 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~85 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~101 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~69 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~117 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~37 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~21 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~5 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~53 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~213 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~229 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~197 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~245 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~357 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~421 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~293 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~485 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~405 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~341 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~277 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~469 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~325 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~389 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~261 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~453 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~437 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~373 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~309 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~501 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~100 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~84 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~68 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~116 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~148 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~164 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~132 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~180 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~20 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~36 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~4 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~52 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~228 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~212 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~196 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~244 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~340 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~404 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~276 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~468 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~420 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~356 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~292 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~484 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~388 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~324 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~260 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~452 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~372 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~436 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~308 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~500 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~163 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~147 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~131 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~179 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~83 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~99 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~67 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~115 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~35 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~19 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~3 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~51 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~211 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~227 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~195 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~243 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~355 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~419 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~291 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~483 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~403 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~339 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~275 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~467 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~323 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~387 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~259 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~451 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~435 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~371 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~307 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~499 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~98 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~82 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~66 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~114 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~146 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~162 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~130 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~178 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~18 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~34 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~2 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~50 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~226 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~210 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~194 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~242 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~338 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~402 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~274 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~466 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~418 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~354 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~290 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~482 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~386 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~322 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~258 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~450 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~370 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~434 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~306 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~498 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~161 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~145 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~129 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~177 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~81 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~97 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~65 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~113 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~33 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~17 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~1 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~49 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~209 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~225 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~193 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~241 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~353 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~417 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~289 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~481 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~401 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~337 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~273 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~465 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~321 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~385 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~257 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~449 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~433 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~369 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~305 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~497 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~96 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~80 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~64 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~112 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~144 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~160 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~128 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~176 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~16 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~32 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~0 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~48 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~224 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~208 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~192 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~240 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~336 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~400 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~272 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~464 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~416 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~352 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~288 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~480 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~384 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~320 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~256 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~448 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~368 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~432 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~304 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Latch CHIP_EMULATOR:inst4|SRAM~496 has unsafe behavior
-    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst2|SRAM_WE_N
+    Warning: Ports D and ENA on the latch are fed by the same signal SRAM:inst8|SRAM_WE_N
 Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "sram_ub_n" is stuck at GND
     Warning (13410): Pin "sram_lb_n" is stuck at GND
@@ -2312,16 +2326,16 @@ Info: 8 registers lost all their fanouts during netlist optimizations. The first
     Info: Register "SCOMP:inst|INT_ACK[2]" lost all its fanouts during netlist optimizations.
     Info: Register "SCOMP:inst|INT_ACK[1]" lost all its fanouts during netlist optimizations.
     Info: Register "SCOMP:inst|INT_ACK[0]" lost all its fanouts during netlist optimizations.
-Info: Implemented 1595 device resources after synthesis - the final resource count might be different
+Info: Implemented 1602 device resources after synthesis - the final resource count might be different
     Info: Implemented 2 input pins
     Info: Implemented 41 output pins
-    Info: Implemented 1535 logic cells
+    Info: Implemented 1542 logic cells
     Info: Implemented 16 RAM segments
     Info: Implemented 1 PLLs
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 1083 warnings
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 1084 warnings
     Info: Peak virtual memory: 266 megabytes
-    Info: Processing ended: Wed Apr 08 01:11:26 2020
-    Info: Elapsed time: 00:00:04
+    Info: Processing ended: Wed Apr 08 17:14:29 2020
+    Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:05
 
 

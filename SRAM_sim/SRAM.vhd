@@ -12,6 +12,7 @@ USE LPM.LPM_COMPONENTS.ALL;
 ENTITY SRAM IS
 	PORT(
 		IO_WRITE    	: IN    STD_LOGIC;
+		IO_CYCLE		: IN    STD_LOGIC;
 		SRAM_ADHI_EN   	: IN    STD_LOGIC;
 		SRAM_ADLOW_EN   : IN    STD_LOGIC;
 		SRAM_WRITE	    : IN    STD_LOGIC;
@@ -38,12 +39,16 @@ TYPE STATE_TYPE IS (
 		WRITE_DISABLE,
 		READ_DATA1, 
 		READ_DATA2, 
-		READ_DATA3
+		READ_DATA3,
+		READ_DATA4,
+		SEND
 	);
 --made a signal called state we can can referece this instead of STATE_TYPE
 SIGNAL STATE: STATE_TYPE;
 SIGNAL TRI_READ : STD_LOGIC;
 SIGNAL TRI_WRITE: STD_LOGIC;
+SIGNAL TRI_SEND: STD_LOGIC;
+SHARED VARIABLE READ_STORE: STD_LOGIC_VECTOR(15 DOWNTO 0);
 
 BEGIN
 
@@ -59,15 +64,28 @@ BEGIN
 	);
 	
 -- Use LPM function to drive I/O bus
-	READ_BUS: LPM_BUSTRI
+	READ_STORE_BUS: LPM_BUSTRI
 	GENERIC MAP (
 		lpm_width => 16
 	)
 	PORT MAP (
 		data     => SRAM_DQ,
 		enabledt => TRI_READ,
+		tridata  => READ_STORE
+	);
+	
+-- Use LPM function to drive I/O bus
+	READ_BUS: LPM_BUSTRI
+	GENERIC MAP (
+		lpm_width => 16
+	)
+	PORT MAP (
+		data     => READ_STORE,
+		enabledt => TRI_SEND,
 		tridata  => IO_DATA
 	);
+	
+
 
 --these three all go to ground, so here they are zero
 SRAM_UB_N <= '0';
@@ -90,7 +108,7 @@ END PROCESS;
 
 PROCESS (IO_WRITE, CLOCK, SRAM_WRITE, SRAM_READ)
 BEGIN
-	IF (IO_WRITE = '0') THEN          
+	IF (IO_WRITE = '0') AND (IO_CYCLE = '0') THEN          
 		STATE <= IDLE;
 	ELSIF (RISING_EDGE(CLOCK)) THEN
 		CASE STATE IS
@@ -100,8 +118,11 @@ BEGIN
 				SRAM_OE_N <= '1';
 				TRI_WRITE <= '0';
 				TRI_READ <= '0';
+				TRI_SEND <= '0';
 				IF (SRAM_WRITE = '1') THEN
 					STATE <= WRITE_EN;
+				ELSIF (SRAM_READ = '1') AND (IO_WRITE = '0') THEN
+					STATE <= SEND;
 				ELSIF (SRAM_READ = '1') THEN
 					STATE <= READ_DATA1;
 				END IF;
@@ -124,79 +145,17 @@ BEGIN
 				STATE <= READ_DATA3;
 			WHEN READ_DATA3 =>
 				TRI_READ <= '1';
+				STATE <= READ_DATA4;
+			WHEN READ_DATA4 =>
 				SRAM_OE_N <= '1';
-				STATE <= IDLE;
+			--Send
+			WHEN SEND =>
+				TRI_SEND <= '1';
 			WHEN OTHERS =>
 				STATE <= IDLE;
 		END CASE;
 	END IF;
 END PROCESS;
 	
---		
---	
---PROCESS (CLOCK, IO_WRITE, SRAM_WRITE)
---BEGIN 
---	IF (IO_WRITE = '1') AND (SRAM_WRITE = '1') THEN
---		IF (RISING_EDGE(CLOCK)) THEN
---			STATE <= WRITE_EN;
---			CASE STATE IS
---				WHEN WRITE_EN =>
---					SRAM_WE_N <= '0';
---					STATE <= DATA_SEND;
---				WHEN DATA_SEND =>
---					SRAM_DQ <= IO_DATA;
---					STATE <= WRITE_DISABLE;
---				WHEN WRITE_DISABLE =>
---					SRAM_WE_N <= '1';
---					IO_DATA <= "ZZZZZZZZZZZZZZZZ";
---				WHEN OTHERS =>
---			END CASE;
---		END IF;
---	END IF;
---END PROCESS;
---
---
---PROCESS (CLOCK, SRAM_READ, IO_WRITE)
---BEGIN
---	IF (IO_WRITE = '1') AND (SRAM_READ = '1') THEN
---		IF (RISING_EDGE(CLOCK)) THEN
---			STATE <= READ_DATA1;
---			CASE STATE IS
---				WHEN DATA_SEND =>
---					SRAM_DQ <= IO_DATA;
---					STATE <= WRITE_DISABLE;
---				WHEN WRITE_DISABLE =>
---					SRAM_WE_N <= '1';
---					IO_DATA <= "ZZZZZZZZZZZZZZZZ";
---				WHEN OTHERS =>
---			END CASE;
---		END IF;
---	END IF;
---END PROCESS;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 END a;

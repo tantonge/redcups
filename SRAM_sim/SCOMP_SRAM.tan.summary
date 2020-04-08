@@ -5,49 +5,49 @@ Timing Analyzer Summary
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 22.760 ns
-From           : CHIP_EMULATOR:inst4|SRAM~366
-To             : SRAM_DQ[14]
+Actual Time    : 22.473 ns
+From           : CHIP_EMULATOR:inst4|SRAM~424
+To             : SRAM_DQ[8]
 From Clock     : clk_50
 To Clock       : --
 Failed Paths   : 0
 
 Type           : Clock Setup: 'altpll0:inst1|altpll:altpll_component|_clk0'
-Slack          : -4.966 ns
+Slack          : -5.159 ns
 Required Time  : 12.50 MHz ( period = 80.000 ns )
 Actual Time    : N/A
-From           : CHIP_EMULATOR:inst4|SRAM~138
-To             : SCOMP:inst|AC[10]
+From           : CHIP_EMULATOR:inst4|SRAM~288
+To             : SCOMP:inst|AC[0]
 From Clock     : clk_50
 To Clock       : altpll0:inst1|altpll:altpll_component|_clk0
-Failed Paths   : 577
+Failed Paths   : 684
 
 Type           : Clock Setup: 'clk_50'
-Slack          : -0.811 ns
+Slack          : -0.389 ns
 Required Time  : 50.00 MHz ( period = 20.000 ns )
 Actual Time    : N/A
-From           : SCOMP:inst|IR[7]
-To             : SRAM:inst2|STATE.IDLE
+From           : SCOMP:inst|IR[4]
+To             : SRAM:inst8|STATE.WRITE_EN
 From Clock     : altpll0:inst1|altpll:altpll_component|_clk0
 To Clock       : clk_50
-Failed Paths   : 20
+Failed Paths   : 21
 
 Type           : Clock Hold: 'altpll0:inst1|altpll:altpll_component|_clk0'
-Slack          : -4.597 ns
+Slack          : -4.791 ns
 Required Time  : 12.50 MHz ( period = 80.000 ns )
 Actual Time    : N/A
-From           : SRAM:inst2|SRAM_ADDR[4]
-To             : CHIP_EMULATOR:inst4|SRAM~417
+From           : SRAM:inst8|SRAM_ADDR[4]
+To             : CHIP_EMULATOR:inst4|SRAM~428
 From Clock     : altpll0:inst1|altpll:altpll_component|_clk0
 To Clock       : altpll0:inst1|altpll:altpll_component|_clk0
-Failed Paths   : 3905
+Failed Paths   : 4362
 
 Type           : Clock Hold: 'clk_50'
 Slack          : 0.391 ns
 Required Time  : 50.00 MHz ( period = 20.000 ns )
 Actual Time    : N/A
-From           : SRAM:inst2|TRI_WRITE
-To             : SRAM:inst2|TRI_WRITE
+From           : SRAM:inst8|STATE.READ_DATA2
+To             : SRAM:inst8|STATE.READ_DATA2
 From Clock     : clk_50
 To Clock       : clk_50
 Failed Paths   : 0
@@ -60,7 +60,7 @@ From           :
 To             : 
 From Clock     : 
 To Clock       : 
-Failed Paths   : 4502
+Failed Paths   : 5067
 
 --------------------------------------------------------------------------------------
 

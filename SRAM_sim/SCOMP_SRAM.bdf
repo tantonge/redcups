@@ -704,7 +704,7 @@ applicable agreement for further details.
 (symbol
 	(rect 392 392 640 584)
 	(text "SRAM" (rect 5 0 35 12)(font "Arial" ))
-	(text "inst2" (rect 8 176 31 188)(font "Arial" ))
+	(text "inst8" (rect 8 176 31 188)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -715,37 +715,44 @@ applicable agreement for further details.
 	(port
 		(pt 0 48)
 		(input)
-		(text "SRAM_ADHI_EN" (rect 0 0 84 12)(font "Arial" ))
-		(text "SRAM_ADHI_EN" (rect 21 43 105 55)(font "Arial" ))
+		(text "IO_CYCLE" (rect 0 0 55 12)(font "Arial" ))
+		(text "IO_CYCLE" (rect 21 43 76 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "SRAM_ADLOW_EN" (rect 0 0 97 12)(font "Arial" ))
-		(text "SRAM_ADLOW_EN" (rect 21 59 118 71)(font "Arial" ))
+		(text "SRAM_ADHI_EN" (rect 0 0 84 12)(font "Arial" ))
+		(text "SRAM_ADHI_EN" (rect 21 59 105 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 1))
 	)
 	(port
 		(pt 0 80)
 		(input)
-		(text "SRAM_WRITE" (rect 0 0 71 12)(font "Arial" ))
-		(text "SRAM_WRITE" (rect 21 75 92 87)(font "Arial" ))
+		(text "SRAM_ADLOW_EN" (rect 0 0 97 12)(font "Arial" ))
+		(text "SRAM_ADLOW_EN" (rect 21 75 118 87)(font "Arial" ))
 		(line (pt 0 80)(pt 16 80)(line_width 1))
 	)
 	(port
 		(pt 0 96)
 		(input)
-		(text "SRAM_READ" (rect 0 0 67 12)(font "Arial" ))
-		(text "SRAM_READ" (rect 21 91 88 103)(font "Arial" ))
+		(text "SRAM_WRITE" (rect 0 0 71 12)(font "Arial" ))
+		(text "SRAM_WRITE" (rect 21 91 92 103)(font "Arial" ))
 		(line (pt 0 96)(pt 16 96)(line_width 1))
 	)
 	(port
 		(pt 0 112)
 		(input)
-		(text "CLOCK" (rect 0 0 37 12)(font "Arial" ))
-		(text "CLOCK" (rect 21 107 58 119)(font "Arial" ))
+		(text "SRAM_READ" (rect 0 0 67 12)(font "Arial" ))
+		(text "SRAM_READ" (rect 21 107 88 119)(font "Arial" ))
 		(line (pt 0 112)(pt 16 112)(line_width 1))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "CLOCK" (rect 0 0 37 12)(font "Arial" ))
+		(text "CLOCK" (rect 21 123 58 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
 	)
 	(port
 		(pt 248 48)
@@ -854,12 +861,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "io_data[15..0]" (rect 480 296 547 308)(font "Arial" ))
-	(pt 472 312)
-	(pt 536 312)
-	(bus)
-)
-(connector
 	(pt 168 112)
 	(pt 152 112)
 )
@@ -943,16 +944,6 @@ applicable agreement for further details.
 	(pt 392 424)
 )
 (connector
-	(text "sram_adhi_en" (rect 312 424 380 436)(font "Arial" ))
-	(pt 312 440)
-	(pt 392 440)
-)
-(connector
-	(text "sram_adlow_en" (rect 312 440 387 452)(font "Arial" ))
-	(pt 312 456)
-	(pt 392 456)
-)
-(connector
 	(pt 808 288)
 	(pt 752 288)
 	(bus)
@@ -1029,11 +1020,6 @@ applicable agreement for further details.
 	(pt 200 80)
 )
 (connector
-	(text "clk_50" (rect 322 488 353 500)(font "Arial" ))
-	(pt 312 504)
-	(pt 392 504)
-)
-(connector
 	(text "sram_write" (rect 290 920 343 932)(font "Arial" ))
 	(pt 280 936)
 	(pt 352 936)
@@ -1044,14 +1030,40 @@ applicable agreement for further details.
 	(pt 352 952)
 )
 (connector
-	(text "sram_write" (rect 322 456 375 468)(font "Arial" ))
+	(text "io_data[15..0]" (rect 480 296 547 308)(font "Arial" ))
+	(pt 552 312)
+	(pt 472 312)
+	(bus)
+)
+(connector
+	(text "sram_adhi_en" (rect 312 440 380 452)(font "Arial" ))
+	(pt 312 456)
+	(pt 392 456)
+)
+(connector
+	(text "sram_adlow_en" (rect 312 456 387 468)(font "Arial" ))
 	(pt 312 472)
 	(pt 392 472)
 )
 (connector
-	(text "sram_read" (rect 322 472 373 484)(font "Arial" ))
+	(text "clk_50" (rect 322 504 353 516)(font "Arial" ))
+	(pt 312 520)
+	(pt 392 520)
+)
+(connector
+	(text "sram_write" (rect 322 472 375 484)(font "Arial" ))
 	(pt 312 488)
 	(pt 392 488)
+)
+(connector
+	(text "sram_read" (rect 322 488 373 500)(font "Arial" ))
+	(pt 312 504)
+	(pt 392 504)
+)
+(connector
+	(text "io_cycle" (rect 322 424 363 436)(font "Arial" ))
+	(pt 312 440)
+	(pt 392 440)
 )
 (junction (pt 800 472))
 (junction (pt 768 456))
