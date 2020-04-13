@@ -34,7 +34,7 @@ Main:
 	; Write a value
 	LOAD   first
 	OUT		SRAM_ADLOW
-	LOADI   22
+	LOADI   4
 	OUT		SRAM_DATA
 	LOADI   &B101
 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
@@ -46,7 +46,7 @@ Main:
 	; Writing Second Value
 	LOAD    second
 	OUT		SRAM_ADLOW
-	LOADI   21
+	LOADI   5
 	OUT		SRAM_DATA
 	LOADI   &B101
 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
@@ -58,7 +58,7 @@ Main:
 	;Writing Third Value
 	LOAD    third
 	OUT		SRAM_ADLOW
-	LOADI   22
+	LOADI   6
 	OUT		SRAM_DATA
 	LOADI   &B101
 	OUT		SRAM_CTRL   ; 101 = drive, write, no OE(no read)
@@ -69,21 +69,27 @@ Main:
 	
 	; Read a value from address 
 	LOAD    first
+	OUT 	SRAM_ADLOW
+	LOADI 	&B110
 	OUT     SRAM_CTRL
 	IN      SRAM_DATA   ; Data will be in AC after this
-	LOADI   &B11
+	LOADI   &B011
 	OUT     SRAM_CTRL
 	
 	LOAD    second
+	OUT 	SRAM_ADLOW
+	LOADI 	&B110
 	OUT     SRAM_CTRL
 	IN      SRAM_DATA   ; Data will be in AC after this
-	LOADI   &B11
+	LOADI   &B011
 	OUT     SRAM_CTRL
 	
 	LOAD    third
+	OUT 	SRAM_ADLOW
+	LOADI 	&B110
 	OUT     SRAM_CTRL
 	IN      SRAM_DATA   ; Data will be in AC after this
-	LOADI   &B11
+	LOADI   &B011
 	OUT     SRAM_CTRL
 	
 	; Write a value incorrectly
@@ -533,9 +539,9 @@ Seven:    DW 7
 Eight:    DW 8
 Nine:     DW 9
 Ten:      DW 10
-first:    DW &H02
-second:   DW &H12
-third:    DW &H23
+first:    DW &H2
+second:   DW &HA
+third:    DW &HE
 
 ; Some bit masks.
 ; Masks of multiple bits can be constructed by ORing these
