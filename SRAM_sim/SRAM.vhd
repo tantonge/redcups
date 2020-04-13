@@ -36,7 +36,8 @@ TYPE STATE_TYPE IS (
 		IDLE,
 		WRITE_EN, 
 		DATA_SEND, 
-		WRITE_DISABLE,
+		WRITE_DISABLE1,
+		WRITE_DISABLE2,
 		READ_DATA1, 
 		READ_DATA2, 
 		READ_DATA3,
@@ -48,7 +49,9 @@ SIGNAL STATE: STATE_TYPE;
 SIGNAL TRI_READ : STD_LOGIC;
 SIGNAL TRI_WRITE: STD_LOGIC;
 SIGNAL TRI_SEND: STD_LOGIC;
-SHARED VARIABLE READ_STORE: STD_LOGIC_VECTOR(15 DOWNTO 0);
+attribute keep : string;
+attribute keep of IO_DATA : signal is "true";
+
 
 BEGIN
 
@@ -71,20 +74,10 @@ BEGIN
 	PORT MAP (
 		data     => SRAM_DQ,
 		enabledt => TRI_READ,
-		tridata  => READ_STORE
-	);
-	
--- Use LPM function to drive I/O bus
-	READ_BUS: LPM_BUSTRI
-	GENERIC MAP (
-		lpm_width => 16
-	)
-	PORT MAP (
-		data     => READ_STORE,
-		enabledt => TRI_SEND,
 		tridata  => IO_DATA
 	);
 	
+
 
 
 --these three all go to ground, so here they are zero
@@ -111,6 +104,7 @@ BEGIN
 	IF (IO_WRITE = '0') AND (IO_CYCLE = '0') THEN          
 		STATE <= IDLE;
 	ELSIF (RISING_EDGE(CLOCK)) THEN
+		TRI_READ <= '1';
 		CASE STATE IS
 			--IDLE
 			WHEN IDLE =>
@@ -121,8 +115,8 @@ BEGIN
 				TRI_SEND <= '0';
 				IF (SRAM_WRITE = '1') THEN
 					STATE <= WRITE_EN;
-				ELSIF (SRAM_READ = '1') AND (IO_WRITE = '0') THEN
-					STATE <= SEND;
+				--ELSIF (SRAM_READ = '1') AND (IO_WRITE = '0') THEN
+					--STATE <= SEND;
 				ELSIF (SRAM_READ = '1') THEN
 					STATE <= READ_DATA1;
 				END IF;
@@ -132,10 +126,11 @@ BEGIN
 				STATE <= DATA_SEND;
 			WHEN DATA_SEND =>
 				TRI_WRITE <= '1';
-				STATE <= WRITE_DISABLE;
-			WHEN WRITE_DISABLE =>
+				STATE <= WRITE_DISABLE1;
+			WHEN WRITE_DISABLE1 =>
+				STATE <= WRITE_DISABLE2;
+			WHEN WRITE_DISABLE2 =>
 				SRAM_WE_N <= '1';
-				IO_DATA <= "ZZZZZZZZZZZZZZZZ";
 				STATE <= IDLE;
 			--Read
 			WHEN READ_DATA1 =>
@@ -149,8 +144,8 @@ BEGIN
 			WHEN READ_DATA4 =>
 				SRAM_OE_N <= '1';
 			--Send
-			WHEN SEND =>
-				TRI_SEND <= '1';
+			--WHEN SEND =>
+				--TRI_SEND <= '1';
 			WHEN OTHERS =>
 				STATE <= IDLE;
 		END CASE;
